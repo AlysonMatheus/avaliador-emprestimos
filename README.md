@@ -20,25 +20,27 @@ JUnit 5 & MockMvc
 🏛️ Arquitetura
 
 Strategy Pattern
-Cada modalidade de empréstimo possui sua própria estratégia (PERSONAL, CONSIGNED, GUARANTEED), permitindo fácil manutenção e extensão das regras.
+Cada modalidade de empréstimo possui sua própria estratégia
+(PERSONAL, CONSIGNED, GUARANTEED), permitindo fácil manutenção e extensão das regras.
 
 Injeção de Dependência
 O LoanService recebe automaticamente todas as estratégias via Spring.
 
 DTOs com Records
-Contratos claros de entrada e saída (UserRequest, LoanResponse, UserResponse).
+Contratos claros de entrada e saída:
+UserRequest, LoanResponse, UserResponse.
 
 🚀 Execução
+Clonar o repositório
 git clone https://github.com/AlysonMatheus/avaliador-emprestimos.git
 
+Executar a aplicação
 
-Executar a classe:
+Rodar a classe:
 
 AvaliadorEmprestimosApplication
 
-
-Endpoint principal
-
+🌐 Endpoint Principal
 POST http://localhost:8080/loans
 
 📥 Exemplo de Requisição
@@ -81,16 +83,8 @@ Estrutura do JSON de resposta
 
 Modalidades de empréstimo retornadas
 
-Execução:
+Execução dos testes
 
-Rodar a classe LoanControllerTest
+Rodar a classe:
 
-📁 Estrutura do Projeto
-src/main/java
- ├── controller → Endpoints REST
- ├── loan       → Estratégias de negócio
- ├── service    → Lógica de avaliação
- └── dto        → DTOs da API
-
-src/test/java
- └── controller → Testes automatizados
+LoanControllerTest
