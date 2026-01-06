@@ -1,8 +1,10 @@
 📝 Avaliador de Empréstimos
+
 🎯 Objetivo
 
 API REST desenvolvida para avaliar a elegibilidade de clientes a empréstimos (Pessoal, Consignado e Com Garantia) com base em renda, idade e localização.
 O projeto aplica Clean Code, boas práticas de arquitetura e padrões de projeto, simulando um cenário real de regras de negócio financeiras.
+
 
 🛠️ Tecnologias
 
@@ -14,7 +16,8 @@ Maven
 
 Lombok
 
-JUnit 5 & MockMvc
+ MockMvc
+
 
 🏛️ Arquitetura
 
@@ -26,6 +29,7 @@ O LoanService recebe automaticamente as estratégias via Spring.
 
 DTOs com Records
 UserRequest, LoanResponse e UserResponse definem contratos claros de entrada e saída.
+
 
 🚀 Execução
 git clone https://github.com/AlysonMatheus/avaliador-emprestimos.git
@@ -39,6 +43,7 @@ AvaliadorEmprestimosApplication
 Endpoint:
 
 POST http://localhost:8080/loans
+
 
 🧪 Testes
 
@@ -55,6 +60,7 @@ Modalidades de empréstimo elegíveis
 Execução:
 
 Rodar a classe LoanControllerTest
+
 
 📁 Estrutura do Projeto
 src/main/java
