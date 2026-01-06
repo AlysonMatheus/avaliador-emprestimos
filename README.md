@@ -1,57 +1,112 @@
 📝 Avaliador de Empréstimos
 🎯 Objetivo do Projeto
-Esta é uma API REST desenvolvida para analisar a elegibilidade de clientes a diferentes tipos de empréstimos (Pessoal, Consignado e com Garantia) com base em perfis específicos que consideram renda mensal, idade e localização geográfica.
 
-O projeto foi construído focando em Código Limpo (Clean Code) e escalabilidade, utilizando padrões de projeto para facilitar a manutenção de regras de negócio complexas.
+Esta é uma API REST desenvolvida para analisar a elegibilidade de clientes a diferentes tipos de empréstimos — Pessoal, Consignado e Com Garantia — com base em perfis específicos que consideram renda mensal, idade e localização geográfica.
+
+O projeto foi construído com foco em Código Limpo (Clean Code), boas práticas de arquitetura e escalabilidade, utilizando padrões de projeto que facilitam a manutenção e a evolução de regras de negócio mais complexas.
 
 🛠️ Tecnologias Utilizadas
-Java 21: Versão utilizada para aproveitar recursos como Records.
 
-Spring Boot 4.0.1: Framework principal para a construção da API.
+Java 21
+Utilizado para aproveitar recursos modernos da linguagem, como Records.
 
-Lombok: Para redução de código boilerplate (construtores e acessores).
+Spring Boot 3.x
+Framework principal para construção da API REST, oferecendo produtividade, injeção de dependência e suporte a testes.
 
-Maven: Gerenciador de dependências e automação de build.
+Lombok
+Redução de código boilerplate (getters, construtores, etc.).
 
-JUnit 5 & MockMvc: Para a implementação de testes automatizados.
+Maven
+Gerenciamento de dependências e automação do build.
+
+JUnit 5 & MockMvc
+Implementação de testes automatizados e testes de integração da API.
 
 🏛️ Arquitetura e Padrões de Projeto
-Strategy Pattern: Cada modalidade de empréstimo possui sua própria classe de estratégia (ConsignedStrategy, PersonalStrategy, GuaranteedStrategy), permitindo que novas regras sejam adicionadas sem modificar o código existente.
+🔹 Strategy Pattern
 
-Injeção de Dependência: O LoanService recebe automaticamente uma lista de todas as estratégias disponíveis via Spring.
+Cada modalidade de empréstimo possui sua própria estratégia de avaliação:
 
-DTO (Data Transfer Objects): Uso de Records para definir contratos claros de entrada (UserRequest) e saída (UserResponse, LoanResponse).
+PersonalStrategy
+
+ConsignedStrategy
+
+GuaranteedStrategy
+
+Isso permite:
+
+Adicionar novas modalidades sem alterar código existente
+
+Manter as regras de negócio desacopladas
+
+Melhorar a legibilidade e manutenção do projeto
+
+🔹 Injeção de Dependência
+
+O LoanService recebe automaticamente todas as estratégias disponíveis via Spring, permitindo uma orquestração simples e flexível da lógica de avaliação.
+
+🔹 DTOs (Data Transfer Objects)
+
+Uso de Records para definir contratos claros de entrada e saída da API:
+
+UserRequest → Dados do cliente
+
+LoanResponse → Modalidades disponíveis
+
+UserResponse → Resposta final da API
 
 🚀 Como Executar o Projeto
-Clonar o repositório:
-
-Bash
-
+1️⃣ Clonar o repositório
 git clone https://github.com/AlysonMatheus/avaliador-emprestimos.git
-Importar no IntelliJ como um projeto Maven.
 
-Executar a aplicação através da classe AvaliadorEmprestimosApplication.
+2️⃣ Importar no IntelliJ
 
-Endpoint principal: POST http://localhost:8080/loans (ou /customer-loans conforme sua configuração).
+Abrir o IntelliJ
+
+Importar o projeto como Maven Project
+
+3️⃣ Executar a aplicação
+
+Rodar a classe principal:
+
+AvaliadorEmprestimosApplication
+
+4️⃣ Endpoint principal
+POST http://localhost:8080/loans
+
+
+(ou /customer-loans, conforme configuração do controller)
 
 🧪 Testes Automatizados
+
 O projeto conta com testes de integração que validam o fluxo completo da API.
 
-Ferramenta: MockMvc para simular requisições HTTP.
+🔹 Ferramenta
 
-Resultado: Validação de status 200 OK e integridade do JSON de resposta.
+MockMvc para simular requisições HTTP
 
-Para rodar os testes:
+🔹 O que é validado
 
-No IntelliJ, abra a classe LoanControllerTest.
+Retorno HTTP 200 OK
 
-Clique com o botão direito e selecione Run 'LoanControllerTest'.
+Estrutura e integridade do JSON de resposta
+
+Lista de empréstimos elegíveis para o cliente
+
+🔹 Como rodar os testes
+
+Abra a classe LoanControllerTest
+
+Clique com o botão direito
+
+Selecione Run 'LoanControllerTest'
 
 📁 Estrutura de Pastas Principal
-src/main/java/.../controller: Exposição dos endpoints da API.
+src/main/java
+ ├── controller   → Exposição dos endpoints REST
+ ├── loan         → Estratégias de regras de negócio (Strategy Pattern)
+ ├── service      → Orquestração da lógica de avaliação
+ └── dto          → Objetos de entrada e saída da API
 
-src/main/java/.../Loan: Implementações das regras de negócio (Strategies).
-
-src/main/java/.../services: Orquestração da lógica de avaliação.
-
-src/test/java: Suíte de testes automatizados.
+src/test/java
+ └── controller   → Testes automatizados da API
